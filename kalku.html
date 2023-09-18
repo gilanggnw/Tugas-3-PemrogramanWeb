@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>
+            Calculator
+        </h1>
+
+        <form>
+            <label for="fnumber">First number:</label><br>
+            <input type="number" id="fnumber" name="fnumber" value=""><br>
+            <label for="snumber">Second number:</label><br>
+            <input type="number" id="snumber" name="snumber" value=""><br>
+        </form>
+        <br>
+
+        <button type="button" id="plus" onclick="operation('+')">
+            +
+        </button>
+
+        <button type="button" id="minus" onclick="operation('-')">
+            -
+        </button>
+
+        <button type="button" id="multi" onclick="operation('*')">
+            *
+        </button>
+
+        <button type="button" id="divi" onclick="operation('/')">
+            /
+        </button>
+
+        <button type="button" id="clear" onclick="clearValue()">
+            Clear Numbers
+        </button>
+
+        <p id="result">
+            Result:
+        </p>
+
+        <script>
+            function operation(operator) {
+                let firstNumber = parseFloat(document.getElementById('fnumber').value);
+                let secondNumber = parseFloat(document.getElementById('snumber').value);
+
+                let result;
+                switch(operator){
+                    case '+':
+                        result = firstNumber + secondNumber;
+                        break;
+                    case '-':
+                        result = firstNumber - secondNumber;
+                        break;
+                    case '*':
+                        result = firstNumber * secondNumber;
+                        break;
+                    case '/':
+                        if (secondNumber == 0) {
+                            alert('Invalid: Division by zero');
+                            return;
+                        }
+                    result = firstNumber / secondNumber;
+                    break;
+                }   
+                
+                document.getElementById('result').innerHTML = "Result: " + result;
+            }
+
+            function clearValue() {
+                document.getElementById('fnumber').value="";
+                document.getElementById('snumber').value="";
+            }
+        </script>
+    </body>
+</html>
